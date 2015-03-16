@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.spider.ILcProductLogDao">
+ <!-- 要对应到所有属性 才能使用-->
+ <resultMap id="lcProductLogMap" type="lcProduct">
+ 	<result property="id" column="id"/>
+ 	<result property="companyName" column="companyName"/>
+	<result property="productName" column="productName"/>
+	<result property="startTime" column="startTime"/>
+	<result property="endTime" column="endTime"/>
+	<result property="days" column="days"/>
+	<result property="area" column="area"/>
+	<result property="price" column="price"/>
+	<result property="income" column="income"/>
+	<result property="incomeType" column="incomeType"/>
+	<result property="productType" column="productType"/>
+	<result property="fengxian" column="fengxian"/>
+	<result property="money" column="money"/>
+	<result property="saleType" column="saleType"/>
+	<result property="productDetailUrl" column="productDetailUrl"/>
+	<result property="productDetail" column="productDetail"/>
+ </resultMap>
+ <!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 "is not known to the MapperRegistry" -->
+ <insert id="addLcProductLog" parameterType="lcProduct" >
+	  <![CDATA[ 
+	  insert into t_ma_lc_product (companyName,productName,startTime,endTime,days,area,
+	  									price,income,incomeType,productType,fengxian,money,
+	  									saleType,productDetailUrl,productDetail)
+	  				values (#{productUrl},#{productName},#{startTime},#{endTime},#{days},#{area},
+	  						#{price},#{income},#{incomeType},#{productType},#{fengxian},#{money},
+	  						#{saleType},#{productDetailUrl},#{productDetail})
+	  ]]>
+ </insert>
+ 
+</mapper>  

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:loxia="http://loxia.benjamin.cn/schema/core" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://loxia.benjamin.cn/schema/core http://loxia.benjamin.cn/schema/core/loxia-spring-ext.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+           
+    <util:properties id="p_schedule" location="classpath:config/schedule.properties"></util:properties>
+	<!-- 业务对象 -->
+	<bean id="bizObject" class="org.guili.ecshop.business.ExpireJobTask" />
+	<!-- <bean id="cqbankSpiderService" class="org.guili.ecshop.business.impl.product.CqbankSpiderService" >
+		<property name="lcProductLogService" ref="lcProductLogService"></property>
+	</bean -->
+	<!-- 定时任务配置 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- ==================== 定时抓取理财信息 ========================= -->
+				<!-- <ref bean="nongHangSpiderTaskTrigger" /> -->
+				<!-- <ref bean="jianHangSpiderTaskTrigger" /> -->
+				<!-- <ref bean="zhaoHangSpiderTaskTrigger" /> -->
+				<!-- <ref bean="minShengSpiderTaskTrigger" /> -->
+				<!-- <ref bean="cqbankSpiderTaskTrigger" /> -->
+				<!-- <ref bean="chinaBankSpiderTaskTrigger" /> -->
+				<!-- <ref bean="jiaoTongSpiderTaskTrigger" /> -->
+				<!-- <ref bean="guangdaSpiderTaskTrigger" /> -->
+				<!-- <ref bean="pingAnSpiderTaskTrigger" /> -->
+				<!-- <ref bean="zhongXinSpiderTaskTrigger" /> -->
+				<!-- <ref bean="xingYeBankSpiderTaskTrigger" /> -->
+				<!-- <ref bean="xinYeBankSpiderTaskTrigger" /> -->
+				<!-- 定时抓取任务
+				 <ref bean="pufaSpiderTaskTrigger" />
+				<ref bean="pufaSpider1TaskTrigger" />
+				<ref bean="pufaSpider2TaskTrigger" />
+				<ref bean="pufaSpider3TaskTrigger" />
+				<ref bean="pufaSpider4TaskTrigger" />
+				
+				<ref bean="nongHangSpiderTaskTrigger" />
+				<ref bean="jianHangSpiderTaskTrigger" />
+				<ref bean="zhaoHangSpiderTaskTrigger" />
+				<ref bean="minShengSpiderTaskTrigger" />
+				<ref bean="cqbankSpiderTaskTrigger" />
+				<ref bean="chinaBankSpiderTaskTrigger" />
+				<ref bean="jiaoTongSpiderTaskTrigger" />
+				<ref bean="guangdaSpiderTaskTrigger" />
+				<ref bean="pingAnSpiderTaskTrigger" />
+				<ref bean="zhongXinSpiderTaskTrigger" />
+				<ref bean="xingYeBankSpiderTaskTrigger" />
+				<ref bean="xinYeBankSpiderTaskTrigger" /> -->
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />
+	</bean>
+</beans>

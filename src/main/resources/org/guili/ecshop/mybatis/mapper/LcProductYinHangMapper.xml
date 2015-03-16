@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.spider.ILcProductYinHangDao">
+ <!-- 要对应到所有属性 才能使用-->
+ <resultMap id="lcProductYinHangMap" type="lcProductYinHang">
+ 	<result property="id" column="id"/>
+ 	<result property="code" column="code"/>
+	<result property="name" column="name"/>
+	<result property="englishName" column="englishName"/>
+	<result property="createTime" column="createTime"/>
+	<result property="version" column="version"/>
+	<result property="orderid" column="orderid"/>
+	<result property="status" column="status"/>
+ </resultMap>
+ 
+   <!-- 查询理财银行信息-->
+ <select id="selectLcProdductYinHangById" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProductYinHang">
+   
+  	select * from t_ma_yinhang 
+  	<where> 
+  	<if test="id !=null">
+        id = #{id}  
+    </if>
+    </where>
+ </select>
+ 
+    <!-- 查询理财银行信息-->
+ <select id="selectLcProdductYinHang" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProductYinHang">
+   
+  	select * from t_ma_yinhang 
+  	<where>
+  	   status=1
+  	   ORDER BY orderid asc 
+    </where>
+ </select>
+</mapper>  

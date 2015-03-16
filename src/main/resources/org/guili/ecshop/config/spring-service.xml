@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!--  -->
+	<bean id="httpComponent" class="org.guili.ecshop.util.HttpComponent"></bean>
+	<bean id="productService" class="org.guili.ecshop.business.impl.product.ProductService">
+		<property name="httpComponent" ref="httpComponent"></property>
+	</bean>
+	<!-- 理财产品服务类 -->
+	<bean id="lcProductLogService" class="org.guili.ecshop.business.impl.product.LcProductLogService">
+		<property name="lcProductLogDao" ref="lcProductLogDao"></property>
+		<property name="lcProductYinHangDao" ref="lcProductYinHangDao"></property>
+	</bean>
+	<!-- 注册登录服务类 -->
+	<bean id="lcMemberService" class="org.guili.ecshop.business.impl.member.LcMemberService">
+		<property name="lcMemberDao" ref="lcMemberDao"></property>
+	</bean>
+	<!-- pet start -->
+	<bean id="petDetailService" class="org.guili.ecshop.business.impl.product.PetDetailService">
+		<property name="petDetailDao" ref="petDetailDao"></property>
+	</bean>
+	<bean id="wubaPetSpider" class="org.guili.ecshop.business.impl.product.WubaPetSpider">
+		<property name="httpComponent" ref="httpComponent"></property>
+		<property name="petDetailService" ref="petDetailService"></property>
+	</bean>
+	<!-- pet end -->
+</beans>

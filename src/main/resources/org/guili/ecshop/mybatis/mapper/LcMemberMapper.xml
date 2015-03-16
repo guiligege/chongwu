@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.spider.ILcMemberDao">
+ <!-- 要对应到所有属性 才能使用-->
+ <resultMap id="lcMemberMap" type="lcMember">
+ 	<result property="id" column="id"/>
+ 	<result property="email" column="email"/>
+	<result property="nickName" column="nickName"/>
+	<result property="password" column="password"/>
+	<result property="createTime" column="createTime"/>
+ </resultMap>
+ 
+ <!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 "is not known to the MapperRegistry" -->
+ <insert id="addLcMember" parameterType="lcMember" >
+	  <![CDATA[ 
+	  insert into t_ma_member (email,nickName,password,createTime)
+	  				values (#{email},#{nickName},#{password},#{createTime})
+	  ]]>
+ </insert>
+  <!-- 根据nickname查询用户-->
+ <select id="selectLcMemberByNickName" parameterType="Map" resultType="org.guili.ecshop.business.member.Member">
+   
+  	select * from t_ma_member 
+  	<where> 
+        nickName = #{nickName}
+    </where>
+ </select>
+ 
+  <!-- 根据email查询用户-->
+ <select id="selectLcMemberByEmail" parameterType="Map" resultType="org.guili.ecshop.business.member.Member">
+   
+  	select * from t_ma_member 
+  	<where> 
+        email = #{email}
+    </where>
+ </select>
+   <!-- 根据email查询用户-->
+ <select id="selectLcMemberByEmailAndPw" parameterType="Map" resultType="org.guili.ecshop.business.member.Member">
+   
+  	select * from t_ma_member 
+  	<where> 
+        email = #{email} and password=#{password}
+    </where>
+ </select>
+   <!-- 根据id查询用户-->
+ <select id="selectLcMemberById" parameterType="Map" resultType="org.guili.ecshop.business.member.Member">
+  	select * from t_ma_member 
+  	<where> 
+        id = #{id}
+    </where>
+ </select>
+</mapper>  

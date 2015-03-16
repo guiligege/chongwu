@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.pet.IPetDetailDao">
+ <!-- 要对应到所有属性 才能使用-->
+ <resultMap id="petSaleInfoMap" type="petSaleInfo">
+ 	<result property="id" column="id"/>
+ 	<result property="title" column="title"/>
+	<result property="titlehash" column="titlehash"/>
+	<result property="nickName" column="nickName"/>
+	<result property="qq" column="qq"/>
+	<result property="telephone" column="telephone"/>
+	<result property="city" column="city"/>
+	<result property="adress" column="adress"/>
+	<result property="adressId" column="adressId"/>
+	<result property="createTime" column="createTime"/>
+	<result property="age" column="age"/>
+	<result property="yimiao" column="yimiao"/>
+	<result property="category" column="category"/>
+	<result property="categoryId" column="categoryId"/>
+	<result property="price" column="price"/>
+	<result property="sex" column="sex"/>
+	<result property="descrip" column="descrip"/>
+	<result property="imageDetail1" column="imageDetail1"/>
+	<result property="imageDetail2" column="imageDetail2"/>
+	<result property="imageDetail3" column="imageDetail3"/>
+	<result property="imageDetail4" column="imageDetail4"/>
+	<result property="status" column="status"/>
+ </resultMap>
+ 
+ <!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 "is not known to the MapperRegistry" -->
+ <insert id="addPetSaleInfo" parameterType="petSaleInfo" >
+	  <![CDATA[ 
+	  insert into pet_sale_info
+	  				 (title,titlehash,nickName,qq,telephone,city,adress,
+	  				 		adressId,createTime,age,yimiao,category,categoryId,price,sex,descrip,
+	  				 		imageDetail1,imageDetail2,imageDetail3,imageDetail4,status)
+	  				 		
+	  				values (#{title},#{titlehash},#{nickName},#{qq},#{telephone},#{city},#{adress},
+	  						#{adressId},#{createTime},#{age},#{yimiao},#{category},#{categoryId},#{price},#{sex},#{descrip},
+	  						#{imageDetail1},#{imageDetail2},#{imageDetail3},#{imageDetail4},#{status})
+	  ]]>
+ </insert>
+ 
+   <!-- 根据id查询用户-->
+ <select id="selectPetSaleInfoById" parameterType="Map" resultType="org.guili.ecshop.bean.chongwu.PetSaleInfo">
+  	select * from pet_sale_info 
+  	where 1=1 
+	  	<if test="id !=null">
+	      and  id = #{id}
+	    </if>
+ </select>
+ <!-- 根据title的hash值查询销售信息-->
+ <select id="selectPetSaleInfoByHash" parameterType="Map" resultType="org.guili.ecshop.bean.chongwu.PetSaleInfo">
+  	select count(1) from pet_sale_info 
+  	where 1=1 
+	  	<if test="titlehash !=null">
+	      and  titlehash = #{titlehash}
+	    </if>
+ </select>
+ 
+</mapper>  

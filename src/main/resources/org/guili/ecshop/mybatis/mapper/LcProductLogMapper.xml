@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.spider.ILcProductLogDao">
+ <!-- 要对应到所有属性 才能使用-->
+ <resultMap id="lcProductLogMap" type="lcProductlog">
+ 	<result property="id" column="id"/>
+ 	<result property="companyName" column="companyName"/>
+	<result property="productName" column="productName"/>
+	<result property="startTime" column="startTime"/>
+	<result property="endTime" column="endTime"/>
+	<result property="days" column="days"/>
+	<result property="area" column="area"/>
+	<result property="price" column="price"/>
+	<result property="income" column="income"/>
+	<result property="incomeType" column="incomeType"/>
+	<result property="productType" column="productType"/>
+	<result property="fengxian" column="fengxian"/>
+	<result property="money" column="money"/>
+	<result property="saleType" column="saleType"/>
+	<result property="productDetailUrl" column="productDetailUrl"/>
+	<result property="productDetail" column="productDetail"/>
+	<result property="costMoney" column="costMoney"/>
+	<result property="version" column="version"/>
+ </resultMap>
+ <!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 "is not known to the MapperRegistry" -->
+ <insert id="addLcProductLog" parameterType="lcProductlog" >
+	  <![CDATA[ 
+	  insert into t_ma_lc_product_log (companyName,productName,startTime,endTime,days,area,
+	  									price,income,incomeType,productType,fengxian,money,
+	  									saleType,productDetailUrl,productDetail,costMoney,version)
+	  				values (#{companyName},#{productName},#{startTime},#{endTime},#{days},#{area},
+	  						#{price},#{income},#{incomeType},#{productType},#{fengxian},#{money},
+	  						#{saleType},#{productDetailUrl},#{productDetail},#{costMoney},#{version})
+	  ]]>
+ </insert>
+ 
+  <!-- 查询理财产品数量-->
+ <select id="selectLcProductCount" parameterType="Map" resultType="Integer">
+   
+  	select count(*) from t_ma_lc_product_log 
+  	<where> 
+  	id>0
+    <if test="yinhang !=null">
+        AND companyName = #{yinhang}  
+    </if>
+    <!-- <if test="income !=null">
+        AND income = #{income}  
+    </if> -->
+    <if test="saleType !=null">
+	    AND saleType = #{saleType}
+	</if>
+	<!-- <if test="days !=null">
+	    AND days = #{days}  
+	</if> -->
+	<if test="daysmin !=null and daysmax!=null ">
+	    AND days BETWEEN  #{daysmin} and  #{daysmax} 
+	</if>
+	<if test="incomemin !=null and incomemax!=null ">
+	    AND income BETWEEN  #{incomemin} and  #{incomemax} 
+	</if>
+    </where>
+ </select>
+ 
+  <!-- 分页查询理财产品信息-->
+ <select id="selectLcProductPage" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  	select log.*,yinhang.englishName from t_ma_lc_product_log log 
+		LEFT JOIN t_ma_yinhang yinhang on log.companyName=yinhang.name 
+  	<where> 
+  	log.id>0
+    <if test="yinhang !=null">
+        AND log.companyName = #{yinhang}  
+    </if>
+    <!-- <if test="income !=null">
+        AND log.income = #{income}  
+    </if> -->
+    <if test="saleType !=null">
+	    AND log.saleType = #{saleType}
+	</if>
+	<if test="daysmin !=null and daysmax!=null ">
+	    AND log.days BETWEEN  #{daysmin} and  #{daysmax} 
+	</if>
+	<if test="incomemin !=null and incomemax!=null ">
+	    AND log.income BETWEEN  #{incomemin} and  #{incomemax} 
+	</if>
+	<if test="orderType=='0'.toString()">
+	 	ORDER BY yinhang.orderid asc,log.income desc
+	</if>
+	<if test="orderType=='1'.toString()">
+		order by log.income desc,log.startTime desc
+	</if>
+	<if test="orderType=='2'.toString()">
+		order by log.days asc,log.startTime desc
+	</if>
+    <if test="start !=null and size!=null">
+    	limit #{start},#{size} 
+    </if>
+    </where>
+    
+ </select>
+ 
+  <!-- 查询理财产品数量-->
+ <select id="selectLcProductByName" parameterType="Map" resultType="Integer">
+   
+  	select count(*) from t_ma_lc_product_log 
+  	<where> 
+  	id>0
+    <if test="productName !=null">
+        AND productName = #{productName}  
+    </if>
+    <if test="startTime !=null">
+        AND startTime = #{startTime}
+    </if>
+    <if test="days !=null">
+        AND days = #{days}
+    </if>
+    </where>
+ </select>
+ 
+   <!-- 根据id查询理财产品-->
+ <select id="selectLcProductById" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  	select log.*,yinhang.englishName from t_ma_lc_product_log log 
+		LEFT JOIN t_ma_yinhang yinhang on log.companyName=yinhang.name 
+	  	<where> 
+	  		log.id=#{id}
+	    </where>
+ </select>
+ <!-- 根据银行名称查询理财产品10个-->
+ <select id="selectLcProductByCompanyName" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  	select * from t_ma_lc_product_log 
+	  	<where> 
+	  		companyName = #{yinhang}
+	    </where>
+	    <if test="size!=null">
+	     	order by startTime desc limit 0,#{size}
+	    </if>
+ </select>
+ 
+ 
+ <!-- 根据查询不同银行最新理财产品10个-->
+ <select id="selectLcProductByOnSale" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  	select * from t_ma_lc_product_log where saleType='在售' 
+  		ORDER BY startTime desc,income desc 
+  	<if test="size!=null">
+    	limit 0,#{size}
+    </if>
+ </select>
+ 
+ <!-- 根据银行名称查询同一时间段的10个理财产品-->
+ <select id="selectLcProductByTime" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+ 
+  	select log.*,yinhang.englishName from t_ma_lc_product_log log 
+		LEFT JOIN t_ma_yinhang yinhang on log.companyName=yinhang.name 
+  	<where> 
+    <if test="yinhang !=null">
+        log.companyName = #{yinhang}  
+    </if>
+	<if test="daysmin !=null and daysmax!=null ">
+	    AND log.days BETWEEN  #{daysmin} and  #{daysmax} 
+	</if>
+		ORDER BY log.startTime desc
+    <if test="size!=null">
+    	limit 0,#{size}
+    </if>
+    </where>
+ </select>
+ 
+ <!-- 查询需要更新的银行理财产品信息 -->
+  <select id="selectLcUpdateProductByCompanyName" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  	select * from t_ma_lc_product_log 
+	  	<where> 
+	  		<if test="yinhang !=null">
+		        companyName = #{yinhang} 
+		    </if>
+		    	and income =0 and incomeType  is null
+		    	order by startTime desc
+		    <if test="size!=null">
+	     	 limit #{start},#{size} 
+	    	</if>
+	    </where>
+ </select>
+ <!-- 更新的银行理财产品信息 -->
+ <select id="updateLcUpdateProduct" parameterType="Map" resultType="Integer">
+  		update   t_ma_lc_product_log set 
+  		<if test="income !=null">
+  			income=#{income},
+  		</if>
+  		<if test="income ==null">
+  			income=0.0,
+  		</if>
+  		<if test="incomeType !=null">
+  			incomeType=#{incomeType} 
+  		</if>
+  		<if test="incomeType ==null">
+  			incomeType='非保本浮动收益' 
+  		</if>
+	  	<where>
+		    productDetailUrl = #{productDetailUrl} 
+	    </where>
+ </select>
+ 
+ <!-- 查询每个银行在线的top n -->
+ <select id="selectLcProductByDate" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  		<![CDATA[
+	    	select * from t_ma_lc_product_log result
+			where result.startTime>=#{start} and  result.startTime<#{end} and (
+			    select count(1) from t_ma_lc_product_log as c 
+			    	where c.income > result.income and c.companyName=result.companyName 
+			    		and c.startTime>=#{start} and  c.startTime<#{end} 
+			) < #{num}
+		 ]]>
+ </select>
+ 
+  <!-- 查询在售的top n -->
+ <select id="selectLcProductByOneDay" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+  		<![CDATA[
+	    	select * from t_ma_lc_product_log 
+			where  saleType='在售' order by income desc limit #{num}
+		 ]]>
+ </select>
+ 
+ <!-- 根据条件查询top n-->
+ <select id="selectLcProductTopByDate" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProduct">
+    	select * from t_ma_lc_product_log 
+    		<where>
+    			<if test="saleType !=null">
+    				AND saleType = #{saleType}
+    			</if>
+    			<if test="fengxian !=null">
+    				and fengxian in('低风险','较低风险')
+    			</if>
+    			<if test="start !=null and end!=null">
+    				and startTime &gt;=#{start} and  startTime &lt;#{end}
+    			</if>
+    			ORDER BY income desc limit #{num}
+   	  		</where>
+ </select> 
+</mapper>  

@@ -1,0 +1,41 @@
+<project name="build-womaime-nocompress" basedir="." default="000_conversePartDeploy" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<!--部署临时文件夹-->
+	<property name="deployFolderTempConverse" value="F:\发布日志\womaime/2014/03/13/staging/css" />
+	<delete dir="${deployFolderTempConverse}"/>
+	<path id="ant-contrib.classpath" path="F:\upload\jar/ant-contrib-1.0b3.jar" />
+		<path id="maven-ant-tasks.classpath" path="F:\upload\jar/maven-ant-tasks-2.1.2.jar" />
+
+	<taskdef classpathref="ant-contrib.classpath" resource="net/sf/antcontrib/antlib.xml" />
+	<typedef classpathref="maven-ant-tasks.classpath" resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" />
+
+	<!--时间戳-->
+	<tstamp prefix="feilong">
+		<format property="NOW" pattern="yyyy-MM-dd HH:mm:ss" />
+		<format property="TODAY" pattern="yyyyMMdd_HHmmss" />
+		<format property="DSTAMP" pattern="yyyyMMdd" />
+		<format property="TSTAMP" pattern="HHmmss" />
+	</tstamp>
+  
+	<!--*********************part 部分发布  ***************************************-->
+	<target name="000_conversePartDeploy" description="womaime 部分发布">
+		<!--*********************************************************************************-->
+
+		<property name="deploy.home.converse" value="E:/tools/apache-tomcat-6.0.36/webapps/ROOT" />
+
+		<!--***************************************************************************************-->
+		<!--发布文件夹(日期)-->
+		<property name="converseSpecifiedFolder" value="${deployFolderTempConverse}\${feilong.TODAY}\ROOT" />
+
+		<!--目标目录-->
+		<copy todir="${converseSpecifiedFolder}" verbose="true">
+			<!--原始目录 默认不复制cvs文件夹-->
+			<fileset dir="${deploy.home.converse}">
+				<include name="**/new_home_content.jsp"/>
+				<include name="**/images/index/JACK_SHIBORI_BLOG.jpg"/>
+				<include name="**/images/index/JACK_SHIBORI_BLOG.jpg"/>
+
+
+			</fileset>
+		</copy>
+	</target>
+</project>

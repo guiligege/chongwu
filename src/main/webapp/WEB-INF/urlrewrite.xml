@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+
+-->
+<urlrewrite default-match-type="regex">
+
+	<!-- 列表页 -->
+    <rule>
+        <note>搜索列表页</note>
+        <from>^/s-(.*)?-(.*)?-(.*)?-(.*)?-(.*)?\.htm$</from>
+        <to type="forward">/s.htm?storeId=$1&amp;activityId=$2&amp;zhekou=$3&amp;categoryId=$4&amp;pageNum=$5</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/s\.htm\?storeId\=(.*)&amp;activityId=(.*)&amp;zhekou=(.*)&amp;categoryId=(.*)&amp;pageNum=(.*)</from>
+        <to last="true">/s-$1-$2-$3-$4-$5.htm</to>
+    </outbound-rule>
+    
+	<!-- 商品商家列表页 -->
+    <rule>
+        <note>搜索列表页</note>
+        <from>^/sps-(.*)?-(.*)?-(.*)?-(.*)?\.htm$</from>
+        <to type="forward">/sps.htm?activityId=$1&amp;zhekou=$2&amp;categoryId=$3&amp;pageNum=$4</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/sps\.htm\?activityId=(.*)&amp;zhekou=(.*)&amp;categoryId=(.*)&amp;pageNum=(.*)</from>
+        <to last="true">/sps-$1-$2-$3-$4.htm</to>
+    </outbound-rule>
+	<!-- 详细页 -->
+    <rule>
+        <note>详细</note>
+        <from>^/pd-(.*)?\.htm$</from>
+        <to type="forward">/product/productDetail.htm?Id=$1</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/product/productDetail\.htm\?Id\=(.*)</from>
+        <to last="true">/pd-$1.htm</to>
+    </outbound-rule>
+    
+    <!-- 调整到商家详细页 -->
+    <!-- /spd-q6JjIb.htm -->
+    <rule>
+        <note>商家页</note>
+        <from>^/spd-(.*)?\.htm$</from>
+        <to type="forward">/product/gotoProduct.htm?shortUrl=$1</to>
+    </rule>
+    <outbound-rule>
+        <from>^/product/gotoProduct\.htm\?shortUrl\=(.*)</from>
+        <to last="true">/spd-$1.htm</to>
+    </outbound-rule>
+    
+    
+    <rule>
+        <note>登陆</note>
+        <from>^/login\.htm$</from>
+        <to type="forward">/member/login.htm</to>
+    </rule>
+
+    <rule>
+        <note>注册</note>
+        <from>^/register\.htm$</from>
+        <to type="forward">/member/register.htm</to>
+    </rule>
+	
+	<!-- 经验分享 -->
+	<!--品牌经验 /jybr-1.htm   /Ex/searchExperienceBrand.htm?pageNum=1-->
+    <rule>
+        <note>品牌经验</note>
+        <from>^/ex/jybr-(.*)?\.htm$</from>
+        <to type="forward">/ex/searchExperienceBrand.htm?pageNum=$1</to>
+    </rule>
+    <!--经验列表 /jylb-1-1-1.htm   /Ex/searchExperience.htm?pageNum=1-->
+    <rule>
+        <note>经验列表</note>
+        <from>^/ex/jylb-(.*)?-(.*)?-(.*)?\.htm$</from>
+        <to type="forward">/ex/searchExperience.htm?storeId=$1&amp;categoryId=$2&amp;pageNum=$3</to>
+    </rule>
+    <!--经验详细 /jyxx-1.htm   /Ex/searchExperienceDetail.htm?experienceId=$1-->
+    <rule>
+        <note>经验详细</note>
+        <from>^/ex/jyxx-(.*)?\.htm$</from>
+        <to type="forward">/ex/searchExperienceDetail.htm?experienceId=$1</to>
+    </rule>
+    
+     <!--licai 列表页查询 -->
+    <rule>
+        <note>搜索列表页</note>
+        <from>^/lc-(.*)?-(.*)?-(.*)?-(.*)?-(.*)?-(.*)?\.htm$</from>
+        <to type="forward">/lc.htm?yinhang=$1&amp;income=$2&amp;saleType=$3&amp;days=$4&amp;orderType=$5&amp;pageNum=$6</to>
+    </rule>
+    <outbound-rule>
+        <from>^/lc\.htm\?yinhang=(.*)&amp;income=(.*)&amp;saleType=(.*)&amp;days=(.*)&amp;orderType=(.*)&amp;pageNum=(.*)</from>
+        <to last="true">/lc-$1-$2-$3-$4-$5-$6.htm</to>
+    </outbound-rule>
+    
+    <!-- 理财详细页 -->
+    <rule>
+        <note>理财详细页</note>
+        <from>^/detail-(.*)?\.htm$</from>
+        <to type="forward">/detail.htm?lcid=$1</to>
+    </rule>
+    <outbound-rule>
+        <from>^/detail\.htm\?lcid=(.*)</from>
+        <to last="true">/detail-$1.htm</to>
+    </outbound-rule>
+    
+     <!--统计列表页查询 -->
+    <rule>
+        <note>统计列表页</note>
+        <from>^/tongji-(.*)?\.htm$</from>
+        <to type="forward">/tongji.htm?pageNum=$1</to>
+    </rule>
+    <outbound-rule>
+        <from>^/tongji\.htm\?pageNum=(.*)</from>
+        <to last="true">/tongji-$1.htm</to>
+    </outbound-rule>
+    <!-- 统计详细页 -->
+    <rule>
+        <note>统计详细页</note>
+        <from>^/tjdetail-(.*)?\.htm$</from>
+        <to type="forward">/tongjidetail.htm?lcid=$1</to>
+    </rule>
+    <outbound-rule>
+        <from>^/tongjidetail\.htm\?lcid=(.*)</from>
+        <to last="true">/tjdetail-$1.htm</to>
+    </outbound-rule>
+     <!--互联网理财列表页查询 -->
+    <rule>
+        <note>互联网理财列表页</note>
+        <from>^/netlicailist-(.*)?\.htm$</from>
+        <to type="forward">/netlicailist.htm?pageNum=$1</to>
+    </rule>
+    <outbound-rule>
+        <from>^/netlicailist\.htm\?pageNum=(.*)</from>
+        <to last="true">/netlicailist-$1.htm</to>
+    </outbound-rule>
+</urlrewrite>

@@ -1,0 +1,722 @@
+@charset "utf-8";
+body {
+    background: none repeat scroll 0 0 #ffffff;
+    color: #353A3D;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simhei,"黑体";
+    font-size: 12px;
+    line-height: 1.42857;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,button,textarea,p,th,td,span,img {
+	margin: 0;
+	padding: 0;
+	text-transform: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset {
+	border-style: none;
+}
+img,iframe {
+	border: 0;
+}
+input,button,textarea,select {
+	font-family: inherit;
+}
+textarea {
+	resize: none;
+}
+li {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+a:link,a:visited {
+	color: #000;
+}
+a:hover,a:active {
+	color: #000;
+}
+.clear{
+	clear: both;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	font-size: 0;
+	float: none !important;
+}
+.header{
+	width: 100%;
+	height: 50px;
+	border-bottom:1px solid #DDD;
+	overflow: hidden;
+	
+}
+.h-content{
+	width: 1170px;
+	height: 50px;
+	margin: 0 auto;
+}
+.h-left{
+	float: left;
+	line-height: 50px;
+	font-size: 12px
+}
+.h-left span{
+	font-size: 18px;
+	margin-right: 10px;
+}
+.h-left a{
+	background: url(../../../img/licai/social-icons-set@small.png) no-repeat scroll 0 0 transparent;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	border-radius: 12px;
+	border: 1px solid #DDDDDD;
+	vertical-align: middle;
+	margin-right: 5px;
+	transition: all 0.3s ease-in-out 0s;
+}
+.h-left a.qq{
+	background-position: -49px -192px;
+	 margin-left: 10px
+}
+.h-left a.qq:hover{
+	background-position: -49px -216px;
+	background-color: #00b2f5;
+	border: 1px solid #00b2f5;
+}
+.h-left a.weibo{
+	background-position: -1px -192px;
+}
+.h-left a.weibo:hover{
+	background-position: -1px -216px;
+	background-color: #da4939;
+	border: 1px solid #da4939;
+}
+.h-left a.weixin{
+	background-position: -24px -192px;
+}
+.h-left a.weixin:hover{
+	background-position: -24px -216px;
+	background-color: #00c500;
+	border: 1px solid #00c500;
+}
+.h-right{
+	float: right;
+}
+.h-right li{
+	float: left;
+}
+.h-right li a{
+	line-height: 50px;
+	padding: 1px 10px;
+	font-size: 13px;
+	border-left: 1px solid #DDDDDD;
+	display: inline-block;
+}
+.h-right li:first-child a{
+	border-left: none;
+}
+.h-right li a i{
+	background: url(../../../img/licai/glyphicons-halflings-orange.png) no-repeat;
+	background-position: -72px -120px;
+	height: 14px;
+	width:14px;
+	display: inline-block;
+	margin-right: 5px;
+}
+.h-right li a:hover{
+	background: #29a9df;
+	color: #ffffff;
+}
+
+.nav{
+	border-bottom: 1px solid #DDDDDD;
+	height: 90px;
+	
+	
+}
+.nav-content{
+	margin: 0 auto;
+	width: 1170px;
+}
+.nav-img img{
+	height: 80px;
+	float: left;
+	margin-left: -10px;
+    margin-right: 20px;
+    padding: 10px 0;
+    position: relative;
+
+
+}
+
+.nav-wenzi ul li a{
+	float: left;
+	font-size: 15px;
+	line-height: 89px;
+    margin-right: 40px;
+   
+}
+.nav-wenzi ul li.cur a{
+	 border-bottom: 3px solid #29A9DF;
+}
+.nav-wenzi ul li a:hover{
+	color: #666666;
+}
+
+.label{
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #00BFFC;
+    color: #00BFFC;
+    font-size: 9px;
+    line-height: 12px;
+    padding: 3px 5px 1px;
+    border-radius: 3px;
+    margin: 10px 5px;
+}
+
+.center{
+	width: 1170px;
+	margin: 0 auto;
+	clear: both;
+}
+/*左边样式*/
+.center-left{
+	width: 800px;
+	float: left;
+	border-right: 1px solid #E3E3E3;
+    padding: 0 15px;
+
+}
+p{
+	line-height: 24px;
+	margin-bottom: 20px;
+	padding: 20px 0;
+}
+.logo-rongtou{
+	background: url(../../../img/licai/guarantee-logo.png) no-repeat;
+	background-position: -54px -18px;
+	display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+    vertical-align: text-bottom;
+    width: 18px;
+}
+.logo-jingyingdai{
+	background: url(../../../img/licai/glyphicons-halflings-gray.png) no-repeat;
+	background-position: -336px -120px;
+	display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    margin-top: 1px;
+    vertical-align: text-top;
+    width: 14px;
+}
+.tag{
+	border-left: 1px solid #CCCCCC;
+    padding: 0 15px;
+    margin: 20px;
+}
+
+.left-one-huang{
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+.left-one-huang-logo{
+	background: url(../../../img/licai/project-status.png) no-repeat;
+	background-position: -100px 0;
+	display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+}
+.left-one-title{
+	margin-left: 65px;
+}
+.left-one-title h2{
+	line-height: 30px;
+}
+.wenzi{
+	padding: 0;
+	font-size: 12px;
+}
+/* hr{
+    border-color: #E3E3E3 -moz-use-text-color #FFFFFF;
+    border-image: none;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 20px 0;
+} */
+img{
+	border: 0 none;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+.left-four:before, .left-four:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.left-four{
+	border-bottom: 1px solid #eeeeee;
+}
+.left-four li{
+	float: left;
+	
+	margin-bottom: -1px;
+	border-top: 3px solid transparent;
+}
+.left-four li a{
+	color: #00648D;
+    display: block;
+    font-size: 17px;
+    padding: 15px 25px;
+}
+.left-four li.active{
+	background-color: #ffffff;
+	border-top: 3px solid #00BFFC;
+    position: relative;
+    z-index: 3;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+}
+.left-four li.active a:before, .left-four li.active a:after{
+	bottom: -1px;
+    content: "";
+    display: block;
+    height: 19px;
+    position: absolute;
+    width: 20px;
+    z-index: 999;
+}
+.left-four li.active a:before {
+	background: url(../../../img/licai/tab-shadow-right.png) no-repeat;
+	right: -20px;
+}
+
+.dl-horizontal {
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 17px 0 0 0;
+    float: left;
+    width: 300px;
+}
+.dl-horizontal dt{
+	clear: left;
+    float: left;
+    overflow: hidden;
+   /* text-align: right;*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+    margin-bottom: 10px;
+    width: 110px;
+}
+.dl-horizontal dt {
+    margin-bottom: 10px;
+    width: auto;
+}
+.dl-horizontal dd {
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+dt, dd {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    min-height: 20px;
+}
+.left-five{
+    clear:both;
+}
+.left-five:before, .left-five:after{
+	clear: both;
+    content: "";
+    display: table;
+}
+.info_wenzi:before, .info_wenzi:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.info_wenzi .dl-horizontal{
+	width: auto;
+}
+.left-five-info1 .dl-horizontal dt{
+	margin-right: 10px;
+    text-align: right;
+    width: 110px;
+}
+h3{
+	font-size: 18px;
+	line-height: 32px;
+	font-weight: normal;
+	padding: 3px 0;
+}
+/* hr{
+    border-color: #E3E3E3 -moz-use-text-color #FFFFFF;
+    border-style: dashed none;
+    border-width: 1px 0;
+    margin: 20px 0;
+} */
+
+h4{
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: normal;
+}
+table{
+	width: 100%;
+	margin-bottom: 20px;
+}
+table th,table td{
+	border-top: 1px solid #DDDDDD;
+	line-height: 20px;
+	padding: 10px;
+	text-align: left;
+	font-size: 12px;
+}
+table th,table tr:first-child{
+	border-top: none;
+}
+/*右边样式*/
+.center-right{
+	width: 310px;
+	float: right;
+	
+}
+.center-right h3{
+	padding-left: 0;
+}
+.center-right > p{
+	clear:both;
+	padding: 0;
+	margin: 0;
+}
+.center-right > p a{
+	color: #00648D;
+}
+/*.center-right > hr{
+	border: 1px solid #E3E3E3;
+}*/
+.touzi > a{
+	color: #ffffff;
+}
+.grade-card.dl-horizontal{
+	margin-bottom: 8px;
+	width: 75px;
+	text-align: left;
+}
+.dl-horizontal .progress {
+    width: 160px;
+    float: left;
+}
+.dl-horizontal .progress, .dl-horizontal .rate-value {
+    float: left;
+}
+.dl-horizontal .rate-value {
+    font-size: 12px;
+    width: 22%;
+    margin-left: 10px;
+}
+
+.progress .bar{
+	height: 100%;
+}
+.progress {
+    background-color: #F7F7F7;
+    background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+}
+.progress-success .bar, .progress .bar-success {
+    background-color: #94D326;
+    border-radius: 4px;
+}
+.sign{
+	background: url(../../../img/licai/glyphicons-halflings-orange.png) no-repeat scroll -144px -120px transparent;
+	display: inline-block;
+	height: 14px;
+    width: 14px;
+}
+
+.important{
+	color: #E86E00;
+	font-size: 17px;
+	font-weight: 500;
+}
+.important a {
+    color: #E86E00;
+    font-size: 14px;
+    font-weight: 500;
+}
+.important a:link,.important a:visited {
+    color: #E86E00;
+    text-decoration: underline;
+}
+
+.btn{
+	background-color: #00BFFC;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 4px 110px;
+    margin-right: -75px;
+   
+}
+.more a{
+	color: #00648D;
+}
+hr.dashed {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #E3E3E3 -moz-use-text-color #FFFFFF;
+    border-image: none;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-style: dashed none;
+    border-width: 1px 0;
+    margin: 20px 0;
+    border-color: #e3e3e3;
+}
+
+.none{
+	display:none;
+}
+
+.sup-footer {
+    border-top: 1px solid #E3E3E3;
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 20px 30px;
+    text-shadow: 0 1px 0 #FFFFFF;
+    clear: both;
+}
+
+.sup-footer, .sup-footer li, .sup-footer a {
+    color: #666666 !important;
+}
+
+.footer-wrap{
+    background: none repeat scroll 0 0 #333333;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+    color: #B0B0B0;
+    min-height: 80px;
+    padding: 0 20px;
+}
+
+.footer-wrap .copyright {
+    margin: 32px 0 0;
+}
+
+.footer-wrap .copyright a {
+    color: #EEEEEE;
+}
+.nav-pills > li {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.nav-tabs > li > a, .nav-pills > li > a {
+    line-height: 14px;
+    margin-right: 2px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.nav-pills > li > a {
+    border-radius: 5px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.nav > .disabled > a {
+    color: #999999;
+}
+.nav > li > a {
+    display: block;
+}
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+    background-color: #0088CC;
+    color: #FFFFFF;
+}
+
+.container{
+    width: 1170px;
+    margin: 0 auto;
+}
+
+<!--头部样式-->
+.preheader{
+	width: 100%;
+	height: 50px;
+	border-bottom:1px solid #DDD;
+	overflow: hidden;
+	
+}
+.pre-h-content{
+	width: 1170px;
+	height: 50px;
+	margin: 0 auto;
+}
+.pre-h-left{
+	float: left;
+	line-height: 50px;
+	font-size: 12px
+}
+.pre-h-left span{
+	font-size: 13px;
+	margin-right: 10px;
+}
+.pre-h-left a{
+	background: url(../../../img/licai/social-icons-set@small.png) no-repeat scroll 0 0 transparent;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	border-radius: 12px;
+	border: 1px solid #DDDDDD;
+	vertical-align: middle;
+	margin-right: 5px;
+	transition: all 0.3s ease-in-out 0s;
+}
+.pre-h-left a.qq{
+	background-position: -49px -192px;
+	 margin-left: 10px
+}
+.pre-h-left a.qq:hover{
+	background-position: -49px -216px;
+	background-color: #00b2f5;
+	border: 1px solid #00b2f5;
+}
+.pre-h-left a.weibo{
+	background-position: -1px -192px;
+}
+.pre-h-left a.weibo:hover{
+	background-position: -1px -216px;
+	background-color: #da4939;
+	border: 1px solid #da4939;
+}
+.pre-h-left a.weixin{
+	background-position: -24px -192px;
+}
+.pre-h-left a.weixin:hover{
+	background-position: -24px -216px;
+	background-color: #00c500;
+	border: 1px solid #00c500;
+}
+.pre-h-right{
+	float: right;
+}
+.pre-h-right li{
+	float: left;
+}
+.pre-h-right li a{
+	line-height: 50px;
+	padding: 1px 10px;
+	font-size: 13px;
+	border-left: 1px solid #DDDDDD;
+	display: inline-block;
+}
+.pre-h-right li:first-child a{
+	border-left: none;
+}
+.pre-h-right li a i{
+	background: url(../../../img/licai/glyphicons-halflings-orange.png) no-repeat;
+	background-position: -72px -120px;
+	height: 14px;
+	width:14px;
+	display: inline-block;
+	margin-right: 5px;
+}
+.pre-h-right li a:hover{
+	background: #29a9df;
+	color: #ffffff;
+}
+a:link,a:visited {
+	color: #000;
+}
+a:hover,a:active {
+	color: #000000;
+}
+.prenav{
+	border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    height: 90px;
+    padding: 2px 84px 3px;
+}
+.prenav-content{
+	margin: 0 auto;
+	width: 1170px;
+}
+.prenav-img img{
+	height: 70px;
+	float: left;
+	margin-left: -10px;
+    margin-right: 20px;
+    padding: 10px 0;
+    position: relative;
+
+
+}
+
+.prenav-wenzi ul li a{
+	float: left;
+	font-size: 15px;
+	line-height: 89px;
+    margin-right: 40px;
+   
+}
+.prenav-wenzi ul li.cur a{
+	 border-bottom: 3px solid #29A9DF;
+}
+.prenav-wenzi ul li a:hover{
+	color: #666666;
+}
+
+.contentmargin{
+	margin-left: 125px;
+}
+
+.none{
+	display: none;
+}
+.partname{
+	font-size: 15px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+
+.listli {
+    background: url("../../../img/licai/unsortlist.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 11px;
+    margin-left: -20px;
+    position: relative;
+    width: 20px;
+}
+
+.tongjidetailincome{
+	color: #e86e00;
+	font-size: 17px;
+}

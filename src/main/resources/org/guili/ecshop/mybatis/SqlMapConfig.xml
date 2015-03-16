@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+	<!-- 对象别名 ，用在mapper里面代替整个对象的访问-->
+    <typeAliases>
+       <typeAlias alias="lcProduct" type="org.guili.ecshop.bean.spider.LcProduct"/>
+       <typeAlias alias="lcProductlog" type="org.guili.ecshop.bean.spider.LcProduct"/>
+       <typeAlias alias="lcProductYinHang" type="org.guili.ecshop.bean.spider.LcProductYinHang"/>
+       <typeAlias alias="lcMember" type="org.guili.ecshop.business.member.Member"/>
+        <typeAlias alias="petSaleInfo" type="org.guili.ecshop.bean.chongwu.PetSaleInfo"/>
+    </typeAliases>
+	<mappers>
+		<!-- 数据库映射文件 -->
+	    <mapper resource="org/guili/ecshop/mybatis/mapper/LcProductLogMapper.xml"/>
+	    <mapper resource="org/guili/ecshop/mybatis/mapper/LcProductYinHangMapper.xml"/>
+	    <mapper resource="org/guili/ecshop/mybatis/mapper/LcMemberMapper.xml"/>
+	    <mapper resource="org/guili/ecshop/mybatis/mapper/PetDetailDaoMapper.xml"/>
+	</mappers>
+</configuration> 

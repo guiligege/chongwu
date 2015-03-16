@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guili.ecshop.dao.spider.ILcProductTongjiDao">
+	 <!-- 要对应到所有属性 才能使用-->
+	 <resultMap id="lcProductLogMap" type="lcProductTongji">
+	 	<result property="id" column="id"/>
+	 	<result property="title" column="title"/>
+		<result property="newlicai" column="newlicai"/>
+		<result property="saletop" column="saletop"/>
+		<result property="salerisk" column="salerisk"/>
+		<result property="presaletop" column="presaletop"/>
+		<result property="presalerisk" column="presalerisk"/>
+		<result property="nettop" column="nettop"/>
+		<result property="p2ptop" column="p2ptop"/>
+		<result property="version" column="version"/>
+	 </resultMap>
+	 
+	 <!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 "is not known to the MapperRegistry" -->
+	 <insert id="addLcProductTongji" parameterType="lcProductTongji" >
+		  <![CDATA[ 
+		  insert into t_ma_lc_product_tongji (title,newlicai,saletop,salerisk,presaletop,presalerisk,nettop,p2ptop,version)
+		  				values (#{title},#{newlicai},#{saletop},#{salerisk},#{presaletop},#{presalerisk},#{nettop},#{p2ptop},#{version})
+		  ]]>
+	 </insert>
+	 
+	 <!-- 查询理财产品数量-->
+	 <select id="selectLcProductTongjiCount" parameterType="Map" resultType="Integer">
+	   <![CDATA[ 
+	  	select count(id) from t_ma_lc_product_tongji
+	  ]]>
+	 </select>
+	 
+	 <!-- 分页查询理财产品信息-->
+	 <select id="selectLcProductTongjiPage" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProductTongji">
+	  	select * from t_ma_lc_product_tongji order by id desc limit #{start},#{size} 
+	 </select>
+	 
+	 <!-- 根据id查询理财产品-->
+	 <select id="selectLcProductTongjiById" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProductTongji">
+	  	select * from t_ma_lc_product_tongji
+	  	<where> 
+		    <if test="id !=null">
+		    	id = #{id} 
+		    </if>
+	    </where>
+	 </select>
+	 
+	 <!-- 根据id查询理财产品-->
+	 <select id="selectLcProductTongjiByTitle" parameterType="Map" resultType="org.guili.ecshop.bean.spider.LcProductTongji">
+	  	select * from t_ma_lc_product_tongji
+	  	<where> 
+		    <if test="title !=null">
+		    	title = #{title} 
+		    </if>
+	    </where>
+	 </select>
+</mapper>  
